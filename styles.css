@@ -197,27 +197,63 @@ li {
   font-size: 0.9rem;
 }
 
+/* HAMBURGER MENU */
+.hamburger {
+  display: none;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  background: var(--navy);
+  border: none;
+  padding: 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: white;
+  margin: 5px 0;
+  transition: 0.3s;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
 /* MOBILE */
 @media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+  
   .sidebar {
-    width: 100%;
-    position: relative;
-    height: auto;
-    padding: 1rem 0;
+    position: fixed;
+    left: -240px;
+    top: 0;
+    height: 100vh;
+    transition: left 0.3s;
+    z-index: 999;
   }
   
-  .sidebar-title {
-    padding: 0 1rem 0.75rem;
-    font-size: 1.1rem;
-  }
-  
-  .sidebar-nav a {
-    padding: 0.6rem 1rem;
+  .sidebar.open {
+    left: 0;
   }
   
   .main-content {
     margin-left: 0;
-    padding: 2rem 1.5rem;
+    padding: 4rem 1.5rem 2rem;
   }
   
   h1 {

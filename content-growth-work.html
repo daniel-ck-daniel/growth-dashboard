@@ -7,6 +7,11 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<button class="hamburger" onclick="toggleMenu()">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
 
 <nav class="sidebar">
   <div class="sidebar-title">Growth Dashboard</div>
@@ -70,5 +75,22 @@
 
 </main>
 
+<script>
+function toggleMenu() {
+  const sidebar = document.querySelector(".sidebar");
+  const hamburger = document.querySelector(".hamburger");
+  sidebar.classList.toggle("open");
+  hamburger.classList.toggle("active");
+}
+
+// Close menu when clicking a link on mobile
+document.querySelectorAll(".sidebar-nav a").forEach(link => {
+  link.addEventListener("click", () => {
+    if (window.innerWidth <= 768) {
+      toggleMenu();
+    }
+  });
+});
+</script>
 </body>
 </html>
